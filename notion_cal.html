@@ -49,7 +49,7 @@
       <div id="minutes" class="numbers"> </div>day
     </div>
     <div class="seconds">
-      <div id="time" class="numbers"> </div>time
+      <div id="weekday" class="numbers"> </div>weekday
     </div>
   </div>
 
@@ -57,22 +57,21 @@
     function updateToday() {
       const now = new Date();
 
-      const year = now.getFullYear();
+      const year = String(now.getFullYear()).slice(-2); 
       const month = String(now.getMonth() + 1).padStart(2, '0');
       const date = String(now.getDate()).padStart(2, '0');
 
-      const hours = String(now.getHours()).padStart(2, '0');
-      const minutes = String(now.getMinutes()).padStart(2, '0');
-      const time = `${hours}:${minutes}`;
+      const weekdays = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+      const weekday = weekdays[now.getDay()];
 
       document.getElementById("days").textContent = year;
       document.getElementById("hours").textContent = month;
       document.getElementById("minutes").textContent = date;
-      document.getElementById("time").textContent = time;
+      document.getElementById("weekday").textContent = weekday;
     }
 
     updateToday(); // 최초 실행
-    setInterval(updateToday, 60000); // 1분마다 갱신
+    setInterval(updateToday, 60000); // 1분마다 갱신 (실제는 요일 변화 거의 없음)
   </script>
 </body>
 </html>
