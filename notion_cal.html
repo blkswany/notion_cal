@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Montserrat:900" />
+  <title>Today's Info Widget</title>
+  <style>
+    body {
+      background-color: white;
+    }
+
+    #timer {
+      color: #eeeeee;
+      text-align: center;
+      text-transform: uppercase;
+      font-family: 'Lato', sans-serif;
+      font-size: .7em;
+      letter-spacing: 5px;
+    }
+
+    .days, .hours, .minutes, .seconds {
+      display: inline-block;
+      padding: 20px;
+      width: 100px;
+      border-radius: 5px;
+
+      background: #eeeeee;
+      color: #183059;
+    }
+
+    .numbers {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 2em;
+      text-align: center;
+      color: #183059;
+    }
+  </style>
+</head>
+<body>
+  <div id="timer">
+    <div class="days">
+      <div id="days" class="numbers"> </div>year
+    </div>
+    <div class="hours">
+      <div id="hours" class="numbers"> </div>month
+    </div>
+    <div class="minutes">
+      <div id="minutes" class="numbers"> </div>day
+    </div>
+    <div class="seconds">
+      <div id="time" class="numbers"> </div>time
+    </div>
+  </div>
+
+  <script>
+    function updateToday() {
+      const now = new Date();
+
+      const year = now.getFullYear();
+      const month = String(now.getMonth() + 1).padStart(2, '0');
+      const date = String(now.getDate()).padStart(2, '0');
+
+      const hours = String(now.getHours()).padStart(2, '0');
+      const minutes = String(now.getMinutes()).padStart(2, '0');
+      const time = `${hours}:${minutes}`;
+
+      document.getElementById("days").textContent = year;
+      document.getElementById("hours").textContent = month;
+      document.getElementById("minutes").textContent = date;
+      document.getElementById("time").textContent = time;
+    }
+
+    updateToday(); // 최초 실행
+    setInterval(updateToday, 60000); // 1분마다 갱신
+  </script>
+</body>
+</html>
