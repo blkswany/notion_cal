@@ -24,7 +24,6 @@
       padding: 20px;
       width: 100px;
       border-radius: 5px;
-
       background: #eeeeee;
       color: #183059;
     }
@@ -35,21 +34,27 @@
       text-align: center;
       color: #183059;
     }
+
+    .weekday-style {
+      font-size: 3em;
+      color: #00aaff;
+      text-transform: capitalize;
+    }
   </style>
 </head>
 <body>
   <div id="timer">
     <div class="days">
-      <div id="days" class="numbers"> </div>year
+      <div id="days" class="numbers"></div>year
     </div>
     <div class="hours">
-      <div id="hours" class="numbers"> </div>month
+      <div id="hours" class="numbers"></div>month
     </div>
     <div class="minutes">
-      <div id="minutes" class="numbers"> </div>day
+      <div id="minutes" class="numbers"></div>day
     </div>
     <div class="seconds">
-      <div id="weekday" class="numbers"> </div>weekday
+      <div id="weekday" class="numbers weekday-style"></div>weekday
     </div>
   </div>
 
@@ -70,8 +75,8 @@
       document.getElementById("weekday").textContent = weekday;
     }
 
-    updateToday(); // 최초 실행
-    setInterval(updateToday, 60000); // 1분마다 갱신 (실제는 요일 변화 거의 없음)
+    updateToday();
+    setInterval(updateToday, 60000);
   </script>
 </body>
 </html>
